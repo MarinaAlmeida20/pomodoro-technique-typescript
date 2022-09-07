@@ -1,5 +1,16 @@
 import React from 'react';
+import { useInterval } from '../hooks/use-interval';
 
-export function PomodoroTimer(props): JSX.Element {
-    return <div>Hello World!</div>;
+interface Props {
+  defaultPomodoroTime: number;
+}
+
+export function PomodoroTimer(props: Props): JSX.Element {
+  const [mainTime, setMainTime] = React.useState(props.defaultPomodoroTime);
+
+  useInterval(() => {
+    setMainTime(mainTime + 1);
+  }, 1000);
+
+  return <div>Hello World! {mainTime}</div>;
 }
