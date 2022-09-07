@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react'
 
 interface Props {
   text: string;
-  handleClick?: () => void;
+  onClick?: () => void;
   className?: string;
 }
 
 export function Button(props: Props): JSX.Element {
   return (
-    <button onClick={props.handleClick} className={props.className}>
+    <button onClick={props.onClick} className={props.className}>
       {props.text}
     </button>
-  );
+  )
 }

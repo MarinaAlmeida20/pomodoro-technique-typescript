@@ -4,7 +4,6 @@
   "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true,
       "source.fixAll": true
-
   },
   "workbench.iconTheme": "material-icon-theme",
 }
