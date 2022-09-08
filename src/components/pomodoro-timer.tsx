@@ -4,10 +4,10 @@ import { Button } from './button'
 import { Timer } from './timer'
 
 interface Props {
-  pomodoroTime: number
-  shortRestTime: number
-  longRestTime: number
-  cycles: number
+  pomodoroTime: number;
+  shortRestTime: number;
+  longRestTime: number;
+  cycles: number;
 }
 
 export function PomodoroTimer(props: Props): JSX.Element {
