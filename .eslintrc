@@ -28,6 +28,19 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "react/react-in-jsx-scope": 0,
-    "react/jsx-uses-react": 0
+    "react/jsx-uses-react": 0,
+    "no-undef": "off"
+  },
+  "globals": {
+    "React": true,
+    "google": true,
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "jsdom": true,
+    "JSX": true
   }
 }

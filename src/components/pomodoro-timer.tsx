@@ -39,7 +39,7 @@ export function PomodoroTimer(props: Props): JSX.Element {
       <div className="controls">
         <Button text="Work" onClick={() => configureWork()}></Button>
         <Button text="test" onClick={() => console.log(1)}></Button>
-        <Button text="test" onClick={() => console.log(1)}></Button>
+        <Button text="Pause" onClick={() => setTimeCounting(false)}></Button>
       </div>
 
       <div className="details">
