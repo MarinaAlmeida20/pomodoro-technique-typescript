@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import React, { useCallback, useEffect, useState } from 'react'
 import { useInterval } from '../hooks/use-interval'
+import { secondsToTime } from '../utils/seconds-to-time'
 import { Button } from './button'
 import { Timer } from './timer'
 
@@ -19,17 +21,15 @@ interface Props {
 }
 
 export function PomodoroTimer(props: Props): JSX.Element {
-  const [mainTime, setMainTime] = React.useState(props.pomodoroTime)
-  const [timeCounting, setTimeCounting] = React.useState(false)
-  const [working, setWorking] = React.useState(false)
-  const [resting, setResting] = React.useState(false)
+  const [mainTime, setMainTime] = useState(props.pomodoroTime)
+  const [timeCounting, setTimeCounting] = useState(false)
+  const [working, setWorking] = useState(false)
+  const [resting, setResting] = useState(false)
+  const [cyclesQtdManager, setCyclesQtdManager] = useState(new Array(props.cycles - 1).fill(true)) // -1 means empty array, so sum 4 cyclesQtdManager
 
-
-  useEffect(() => {
-    if (working) document.body.classList.add('working')
-    if (resting) document.body.classList.remove('working')
-
-  }, [working, resting])
+  const [completedCycles, setCompletedCycles] = useState(0)
+  const [fullWorkingTime, setFullWorkingTime] = useState(0)
+  const [numberOfPomodoros, setNumberOfPomodoros] = useState(0)
 
   useInterval(
     () => {
@@ -39,15 +39,19 @@ export function PomodoroTimer(props: Props): JSX.Element {
   )
 
   // starting work
-  const configureWork = () => {
+  const configureWork = useCallback(() => { // useCallback make the no change in every render
     setTimeCounting(true)
     setWorking(true) // when this is true the classList will work
     setResting(false)
     setMainTime(props.pomodoroTime) // reset the time
     audioStartWorking.play()
-  }
+  }, [setTimeCounting,
+    setWorking,
+    setResting,
+    setMainTime,
+    props.pomodoroTime,])
 
-  const configureRest = (long: boolean) => {
+  const configureRest = useCallback((long: boolean) => {
     setTimeCounting(true)
     setWorking(false)
     setResting(true)
@@ -59,7 +63,47 @@ export function PomodoroTimer(props: Props): JSX.Element {
     }
 
     audioStopWorking.play()
-  }
+  }, [setTimeCounting,
+    setWorking,
+    setResting,
+    setMainTime,
+    props.longRestTime,
+    props.shortRestTime,])
+
+  useEffect(() => {
+    if (working) document.body.classList.add('working');
+    if (resting) document.body.classList.remove('working');
+
+    // if the 25min not finished
+    if (mainTime > 0) return;
+
+    // if the cyclesQtdManager not finished
+    if (working && cyclesQtdManager.length > 0) {
+      configureRest(false)
+      cyclesQtdManager.pop(); // to remove one cycle from the Array
+    } else if (working && cyclesQtdManager.length <= 0) {
+      configureRest(true)
+      setCyclesQtdManager(new Array(props.cycles - 1).fill(true));
+      setCompletedCycles(completedCycles + 1)
+    }
+
+    // pomodors number
+    if (working) setNumberOfPomodoros(numberOfPomodoros + 1)
+
+    // resting
+    if (resting) configureWork()
+
+
+  }, [working,
+    resting,
+    mainTime,
+    cyclesQtdManager,
+    numberOfPomodoros,
+    completedCycles,
+    configureRest,
+    setCyclesQtdManager,
+    configureWork,
+    props.cycles])
 
   return (
     <div className="pomodoro">
@@ -77,8 +121,9 @@ export function PomodoroTimer(props: Props): JSX.Element {
       </div>
 
       <div className="details">
-        <p>Testando: dsgasdg sdgagd asgf adfg adgf</p>
-        <p>Testando: dsgasdg sdgagd asgf adfg adgf</p>
+        <p>Completed Cycles: {completedCycles}</p>
+        <p>Work Times: {secondsToTime(fullWorkingTime)}</p>
+        <p>Completed Pomodoros: {numberOfPomodoros}</p>
       </div>
     </div>
   )
