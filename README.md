@@ -8,13 +8,38 @@ Pomodoro timer is a simple application that keeps you focused and productive by 
 
 The Pomodoro timer we’ll be building in this tutorial implements the Pomodoro technique perfectly and tells you exactly when to work and when to take a short break. The basic process is as follows:
 
- - Start a 25-minute timer.
- - Work until the timer rings.
- - Take a short, five minutes break.
- - Every four pomodoros, take a longer break (15 minutes).
+- Start a 25-minute timer.
+- Work until the timer rings.
+- Take a short, five minutes break.
+- Every four pomodoros, take a longer break (15 minutes).
 
- ## Languages, Library and Tools used
+## Languages, Library and Tools used
 
-  - ReactJS
-  - TypeScript
-  - CSS
+- ReactJS
+- TypeScript
+- CSS
+
+## App link
+
+## ✨ Demo
+
+<p align="center">
+  <img width="700" align="center" src="https://github.com/MarinaAlmeida20/github-best-guess/blob/main/src/assets/ezgif.com-gif-maker.gif?raw=true" alt="demo"/>
+</p>
+
+## Author
+
+👤 **Marina Almeida** ❤️
+
+- Github:[@MarinaAlmeida20](https://github.com/MarinaAlmeida20)
+- LinkedIn: [@MarinaAlmeida](https://www.linkedin.com/in/marinaalmeida20/)
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
