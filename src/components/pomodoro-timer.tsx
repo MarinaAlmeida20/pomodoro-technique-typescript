@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useCallback, useEffect, useState } from 'react'
 import { useInterval } from '../hooks/use-interval'
+import { secondsToMinutes } from '../utils/seconds-to-minutes'
 import { secondsToTime } from '../utils/seconds-to-time'
 import { Button } from './button'
 import { Timer } from './timer'
