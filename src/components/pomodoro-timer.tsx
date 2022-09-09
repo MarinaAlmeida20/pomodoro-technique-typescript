@@ -108,7 +108,7 @@ export function PomodoroTimer(props: Props): JSX.Element {
 
   return (
     <div className="pomodoro">
-      <h2>You are: working</h2>
+      <h2>You are: {working ? 'Working' : 'Resting'}</h2>
       <Timer mainTime={mainTime} />
 
       <div className="controls">
@@ -123,7 +123,7 @@ export function PomodoroTimer(props: Props): JSX.Element {
 
       <div className="details">
         <p>Completed Cycles: {completedCycles}</p>
-        <p>Work Timer: {secondsToTime(fullWorkingTime)}</p>
+        <p>Working Time: {secondsToTime(fullWorkingTime)}</p>
         <p>Completed Pomodoros: {numberOfPomodoros}</p>
       </div>
     </div>
