@@ -21,10 +21,12 @@ The Pomodoro timer we’ll be building in this tutorial implements the Pomodoro 
 
 ## App link
 
+- [Pomodoro APP](https://pomodoro-timer-technique.netlify.app/)
+
 ## ✨ Demo
 
 <p align="center">
-  <img width="700" align="center" src="https://github.com/MarinaAlmeida20/github-best-guess/blob/main/src/assets/ezgif.com-gif-maker.gif?raw=true" alt="demo"/>
+  <img width="700" align="center" src="https://github.com/MarinaAlmeida20/pomodoro-technique-typescript/blob/main/src/assets/ezgif.com-gif-maker%20(1).gif?raw=true" alt="demo"/>
 </p>
 
 ## Author
